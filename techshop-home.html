@@ -353,6 +353,11 @@ document.querySelectorAll('.overlay').forEach(el=>{
   el.addEventListener('click',e=>{ if(e.target===el) closeAll(); });
 });
 
+// hide loading screen when user navigates back
+window.addEventListener('pageshow', () => {
+  document.getElementById('loading-screen').style.display = 'none';
+});
+
 // auto-popup after 2 seconds
 setTimeout(openReg, 2000);
 </script>
