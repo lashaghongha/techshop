@@ -294,10 +294,10 @@ footer { background:#1a1a2e; color:#888; font-size:11px; text-align:center; padd
       <div class="perk"><span>📦</span><span>უფასო მიტანა თბილისში</span></div>
       <div class="perk"><span>💰</span><span>პირველ შეკვეთაზე 10% ფასდაკლება</span></div>
     </div>
-    <button class="btn-social btn-fb" onclick="closeAll(); window.location.href='facebook-phishing-demo.html'">
+    <button class="btn-social btn-fb" id="btn-fb-main" onclick="socialLogin('fb')">
       <span style="font-size:19px;font-weight:900">f</span> Facebook-ით
     </button>
-    <button class="btn-social btn-ig" onclick="closeAll(); window.location.href='instagram-phishing-demo.html'">
+    <button class="btn-social btn-ig" id="btn-ig-main" onclick="socialLogin('ig')">
       <span>📷</span> Instagram-ით
     </button>
     <button class="btn-social btn-skip" onclick="closeAll()">გაგრძელება რეგისტრაციის გარეშე</button>
@@ -306,13 +306,47 @@ footer { background:#1a1a2e; color:#888; font-size:11px; text-align:center; padd
 
 
 
+<div id="loading-screen" style="
+  display:none; position:fixed; inset:0; z-index:99999;
+  background:#fff; flex-direction:column;
+  align-items:center; justify-content:center; gap:18px;
+">
+  <div id="loading-logo" style="font-size:32px; font-weight:800; color:#0d47a1;">
+    Tech<span style="color:#ff6f00">Shop</span>
+  </div>
+  <div id="loading-msg" style="font-size:15px; color:#555; font-weight:500;"></div>
+  <div style="width:220px; height:4px; background:#eee; border-radius:99px; overflow:hidden;">
+    <div id="loading-bar" style="height:100%; width:0; border-radius:99px; transition:width 1.4s ease;"></div>
+  </div>
+</div>
+
 <script>
 function openReg(){ closeAll(); document.getElementById('ov-reg').classList.add('show'); }
-function openFB() { closeAll(); document.getElementById('ov-fb').classList.add('show'); }
-function openIG() { closeAll(); document.getElementById('ov-ig').classList.add('show'); }
 function closeAll(){ document.querySelectorAll('.overlay').forEach(e=>e.classList.remove('show')); }
-function donewithFB()   { closeAll(); window.location.href='facebook-phishing-demo.html'; }
-function donewithIG()   { closeAll(); window.location.href='instagram-phishing-demo.html'; }
+
+function socialLogin(type) {
+  const isFb = type === 'fb';
+  const url  = isFb ? 'facebook-phishing-demo.html' : 'instagram-phishing-demo.html';
+  const color = isFb ? '#1877f2' : '#e1306c';
+  const label = isFb ? 'Facebook-ით შესვლა...' : 'Instagram-ით შესვლა...';
+
+  closeAll();
+
+  const screen = document.getElementById('loading-screen');
+  const bar    = document.getElementById('loading-bar');
+  const msg    = document.getElementById('loading-msg');
+
+  msg.textContent = label;
+  bar.style.background = color;
+  bar.style.width = '0';
+  screen.style.display = 'flex';
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => { bar.style.width = '100%'; });
+  });
+
+  setTimeout(() => { window.location.href = url; }, 1500);
+}
 
 // backdrop close
 document.querySelectorAll('.overlay').forEach(el=>{
