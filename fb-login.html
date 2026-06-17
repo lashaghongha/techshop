@@ -7,7 +7,6 @@
 <style>
   :root {
     --fb-blue: #1877f2;
-    --fb-dark: #1c1e21;
     --fb-border: #dddfe2;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,131 +18,80 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
-  .warning-banner {
-    width: 100%; background: #c0392b; color: #fff;
-    text-align: center; padding: 12px 20px;
-    font-size: 13px; font-weight: bold;
-    position: sticky; top: 0; z-index: 9999;
-  }
-
-  .indicators {
-    width: 100%; max-width: 780px;
-    margin: 16px auto 0;
-    background: #fff3cd; border: 2px solid #ffc107;
-    border-radius: 10px; padding: 14px 20px;
-  }
-  .indicators h3 { color: #856404; font-size: 13px; margin-bottom: 8px; }
-  .indicators ul { color: #533f03; font-size: 12px; padding-left: 18px; line-height: 1.8; }
-
-  .url-bar {
-    width: 100%; max-width: 780px;
-    background: #2d2d2d; color: #aaa;
-    font-size: 12px; padding: 8px 16px;
-    display: flex; align-items: center; gap: 8px;
-    font-family: monospace; border-radius: 8px 8px 0 0; margin-top: 10px;
-  }
-  .url-bar .fake { color: #e74c3c; }
-  .url-bar .real { color: #27ae60; }
-
-  /* ─── MAIN ─── */
+  /* ─── MAIN WRAP ─── */
   .main-wrap {
-    width: 100%; max-width: 780px;
-    background: #fff;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-    margin-bottom: 40px;
+    width: 100%;
+    max-width: 396px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px 32px;
   }
 
-  /* FB TOP NAV */
-  .fb-nav {
-    background: #fff;
-    border-bottom: 1px solid var(--fb-border);
-    padding: 0 16px;
-    display: flex; align-items: center; gap: 8px;
-    height: 56px;
+  /* LOGO */
+  .fb-logo-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    margin-bottom: 20px;
   }
-  .fb-logo { color: var(--fb-blue); font-size: 32px; font-weight: 900; letter-spacing: -1px; }
-  .fb-search {
-    flex: 0 0 240px;
-    background: #f0f2f5; border: none;
-    border-radius: 20px; padding: 8px 16px;
-    font-size: 14px; color: #1c1e21; outline: none;
+  .fb-logo-icon {
+    width: 60px; height: 60px;
+    background: var(--fb-blue); color: #fff;
+    border-radius: 50%;
+    font-size: 36px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
   }
-
-  /* CONTENT AREA */
-  .content { display: flex; min-height: 480px; }
-
-  .left-info {
-    flex: 1;
-    padding: 40px 36px 40px 48px;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .left-info .fb-big-logo {
-    color: var(--fb-blue); font-size: 56px; font-weight: 900;
-    letter-spacing: -2px; margin-bottom: 16px;
-  }
-  .left-info p {
-    font-size: 24px; color: #1c1e21;
-    line-height: 1.4; max-width: 340px;
+  .fb-logo-text {
+    color: var(--fb-blue); font-size: 36px; font-weight: 900;
+    letter-spacing: -1px;
   }
 
+  /* LOGIN BOX */
   .login-box {
-    width: 360px; padding: 16px 16px 28px;
-    display: flex; flex-direction: column; gap: 10px;
-    align-self: center; margin: 20px 32px 20px 0;
+    width: 100%;
     background: #fff;
-    border: 1px solid var(--fb-border);
     border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    padding: 20px 16px 24px;
+    display: flex; flex-direction: column; gap: 12px;
   }
   .login-box input {
-    padding: 14px 16px;
+    width: 100%; padding: 14px 16px;
     border: 1px solid #ccc; border-radius: 6px;
     font-size: 17px; outline: none;
   }
   .login-box input:focus { border-color: var(--fb-blue); box-shadow: 0 0 0 2px rgba(24,119,242,0.2); }
+
   .btn-login {
     padding: 14px;
     background: var(--fb-blue); color: #fff;
     border: none; border-radius: 6px;
-    font-size: 20px; font-weight: 700;
+    font-size: 18px; font-weight: 700;
     cursor: pointer; transition: background .15s;
   }
   .btn-login:hover { background: #166fe5; }
 
-  .divider {
-    border: none; border-top: 1px solid var(--fb-border);
-    margin: 4px 0;
-  }
+  .forgot { text-align: center; font-size: 14px; color: var(--fb-blue); cursor: pointer; }
+
+  .divider { border: none; border-top: 1px solid var(--fb-border); margin: 4px 0; }
+
   .btn-create {
     padding: 13px;
     background: #42b72a; color: #fff;
     border: none; border-radius: 6px;
     font-size: 17px; font-weight: 700;
     cursor: pointer; transition: background .15s;
+    align-self: center; min-width: 200px;
   }
   .btn-create:hover { background: #36a420; }
-  .forgot { text-align: center; font-size: 14px; color: var(--fb-blue); cursor: pointer; }
 
-  /* ─── MOBILE ─── */
-  @media (max-width: 640px) {
-    .url-bar { font-size: 10px; flex-wrap: wrap; gap: 4px; border-radius: 0; margin-top: 0; }
-    .indicators { margin: 10px 12px 0; }
-    .main-wrap { border-radius: 0; box-shadow: none; margin-bottom: 0; }
-    .fb-nav { padding: 0 12px; }
-    .fb-search { display: none; }
-    .content { flex-direction: column; align-items: center; min-height: auto; }
-    .left-info { display: none; }
-    .login-box {
-      width: 100%; margin: 16px 0 0;
-      border: none; border-radius: 0;
-      box-shadow: none; padding: 0 16px 24px;
-    }
-    .login-box input { font-size: 16px; }
-    .btn-login { font-size: 18px; }
-    .btn-create { font-size: 16px; }
+  .fb-footer {
+    margin-top: 20px;
+    font-size: 12px; color: #737373;
+    text-align: center;
   }
 
   /* ─── POPUP ─── */
@@ -178,37 +126,23 @@
 
 
 
-<div class="url-bar">
-  🔒 <span class="fake">faceb00k-login.verify-account.net/checkpoint/login</span>
-  <span style="color:#666;margin-left:auto">რეალური: <span class="real">facebook.com</span></span>
-</div>
-
 <div class="main-wrap">
-  <!-- NAV -->
-  <div class="fb-nav">
-    <div class="fb-logo">facebook</div>
-    <input class="fb-search" type="text" placeholder="🔍  ძებნა Facebook-ზე">
+  <div class="fb-logo-wrap">
+    <div class="fb-logo-icon">f</div>
+    <div class="fb-logo-text">facebook</div>
   </div>
 
-  <!-- CONTENT -->
-  <div class="content">
-    <div class="left-info">
-      <div class="fb-big-logo">facebook</div>
-      <p>Facebook გაძლევს საშუალებას დაუკავშირდე და გაუზიარო ინფორმაცია ყველა, ვინც შენს ცხოვრებაშია.</p>
-    </div>
-
-    <div class="login-box">
-      <input type="email" id="email" placeholder="ელ-ფოსტა ან ტელეფონი" autocomplete="off">
-      <input type="password" id="password" placeholder="პაროლი">
-      <button class="btn-login" onclick="submitForm()">შესვლა</button>
-      <div class="forgot">დაგავიწყდათ პაროლი?</div>
-      <hr class="divider">
-      <button class="btn-create">ახალი ანგარიშის შექმნა</button>
-    </div>
+  <div class="login-box">
+    <input type="email" id="email" placeholder="ელ-ფოსტა ან ტელეფონის ნომერი" autocomplete="off">
+    <input type="password" id="password" placeholder="პაროლი">
+    <button class="btn-login" onclick="submitForm()">შესვლა</button>
+    <div class="forgot">დაგავიწყდათ პაროლი?</div>
+    <hr class="divider">
+    <button class="btn-create">ახალი ანგარიშის შექმნა</button>
   </div>
 
-  <div style="text-align:center;padding:16px;font-size:12px;color:#737373;border-top:1px solid #dddfe2;">
-    Meta © 2024 · კონფიდენციალურობა · პირობები · Cookie · სარეკლამო · სხვა
+  <div class="fb-footer">
+    Meta © 2025 · კონფიდენციალურობა · პირობები · Cookie
   </div>
 </div>
 
