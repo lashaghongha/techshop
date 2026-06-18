@@ -286,16 +286,22 @@ body {
 /* ─── CTA ─── */
 .btn-claim {
   width:100%;
-  background:linear-gradient(90deg, #2e7d32, #388e3c);
-  color:#fff; border:none; border-radius:12px;
+  background:linear-gradient(180deg, #43a047, #2e7d32);
+  color:#fff; border:none; border-radius:14px;
   padding:18px; font-size:17px; font-weight:800;
   cursor:pointer; font-family:inherit;
   margin-bottom:10px;
-  box-shadow:0 4px 16px rgba(46,125,50,.35);
-  transition:opacity .15s;
+  box-shadow:0 6px 0 #1b5e20, 0 8px 18px rgba(46,125,50,.4);
+  transition:transform .1s, box-shadow .1s;
   -webkit-tap-highlight-color:transparent;
+  position:relative;
+  top:0;
 }
-.btn-claim:active { opacity:.85; }
+.btn-claim:hover { background:linear-gradient(180deg, #4caf50, #388e3c); }
+.btn-claim:active {
+  top:4px;
+  box-shadow:0 2px 0 #1b5e20, 0 3px 8px rgba(46,125,50,.3);
+}
 .btn-claim .btn-sub { font-size:11px; font-weight:500; opacity:.85; display:block; margin-top:2px; }
 
 .trust-row {
